@@ -1,0 +1,104 @@
+{
+  "project_name": "HealSync",
+  "summary": "HealSync is a full-stack doctor–patient platform that connects patients with verified doctors for both in-person and video consultations. The MVP focuses on appointment scheduling, real-time availability, secure telehealth video sessions, and commission-based monetization.",
+  "core_value_proposition": {
+    "patients": "Fast, transparent access to trusted healthcare professionals online or in person.",
+    "doctors": "Zero-upfront, commission-based platform for acquiring and managing patients.",
+    "platform": "Scalable and revenue-positive model using a per-booking commission system."
+  },
+  "mvp_goals": [
+    "Launch a working marketplace connecting patients and doctors.",
+    "Enable full appointment flow: search → booking → payment → consultation → review.",
+    "Validate monetization via commission on first-time patient bookings."
+  ],
+  "key_features": {
+    "patients": [
+      "Signup with email or phone verification",
+      "Search doctors by specialty, location, or consultation type",
+      "View doctor profiles with bio, pricing, and ratings",
+      "Check real-time calendar availability",
+      "Book and pay instantly via secure payment gateway",
+      "Join telehealth video consultations",
+      "Receive appointment reminders and submit post-visit feedback"
+    ],
+    "doctors": [
+      "Signup and verify credentials or licenses",
+      "Create and manage doctor profile with specialties, pricing, and consultation type",
+      "Manage availability and calendar",
+      "Access appointment dashboard for upcoming and past visits",
+      "Join or host video sessions",
+      "View earnings and payouts"
+    ]
+  },
+  "monetization_model": {
+    "doctors": "Free to join; 10–15% commission on first booking with new patients.",
+    "patients": "Free to browse; pay consultation fee upfront at booking."
+  },
+  "tech_stack": {
+    "frontend": "React (Vite) + SCSS (plain CSS, mobile-first)",
+    "backend": "Node.js + Express (CommonJS)",
+    "database": "MongoDB (Mongoose)",
+    "auth": "JWT (access + refresh tokens)",
+    "payments": "Stripe or Paystack",
+    "video_calls": "Twilio, Agora, or WebRTC",
+    "deployment": {
+      "client": "Vercel (port 4000)",
+      "server": "Render or Heroku (port 5000)"
+    },
+    "testing": {
+      "backend": "Jest + Supertest",
+      "frontend": "Vitest + React Testing Library"
+    },
+    "ci_cd": "GitHub Actions enforcing 100% coverage before deploy"
+  },
+  "data_models": {
+    "Doctor": [
+      "name",
+      "email",
+      "password",
+      "specialty",
+      "experience",
+      "fee",
+      "consultationType",
+      "availability",
+      "rating",
+      "verified"
+    ],
+    "Patient": ["name", "email", "password", "age", "gender", "location"],
+    "Appointment": [
+      "doctorId",
+      "patientId",
+      "date",
+      "time",
+      "type",
+      "status",
+      "paymentStatus",
+      "videoLink",
+      "notes"
+    ],
+    "Review": ["appointmentId", "doctorId", "patientId", "rating", "comment"]
+  },
+  "deployment_and_devops": {
+    "env_usage": "All secrets stored in .env (Mongo URI, JWT secret, Stripe keys, etc.)",
+    "ports": {
+      "client": 4000,
+      "server": 5000
+    },
+    "ci_pipeline": "Runs tests and deploys automatically when 100% coverage is achieved"
+  },
+  "long_term_vision": [
+    "Subscription membership plans with discounted visits",
+    "Integrated pharmacy and lab test ordering",
+    "AI-driven symptom triage assistant",
+    "Clinic and multi-doctor management dashboard",
+    "Secure messaging between doctors and patients"
+  ],
+  "repository": {
+    "name": "healsync-mern",
+    "branching_strategy": {
+      "main": "Production branch",
+      "dev": "Active development branch",
+      "feature/*": "Feature-specific branches for modules like auth, booking, payments"
+    }
+  }
+}
